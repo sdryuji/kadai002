@@ -23,9 +23,9 @@ app_name = 'myapp'
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('index', views.IndexView.as_view(), name='index'),
-    path('store_search/', views.StoreSearchView.as_view(),
-         name='store_search'),
-    path('store_search_result/', 
-         views.StoreSearchResultView.as_view(), name='store_search_result')
+    # path('index', views.IndexView.as_view(), name='index'),
+    path('search/', views.SearchView.as_view(),
+         name='search'),
+    path('search_result/',
+         views.SearchResultView.as_view(), name='search_result')
 ]

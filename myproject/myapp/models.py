@@ -1,8 +1,5 @@
 from django.contrib.auth.models import Group
 from django.db import models
-
-# Create your models here.
-from django.db import models
 from django.contrib.auth.models import AbstractUser, Permission
 
 
@@ -52,7 +49,7 @@ class StoreUser(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
 
-class AdminUser(models.Model):
+class Administrator(models.Model):
     name = models.CharField(max_length=100)
     id = models.AutoField(primary_key=True)
     password = models.CharField(max_length=100)
