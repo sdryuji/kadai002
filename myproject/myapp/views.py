@@ -13,6 +13,10 @@ class StoreSearchView(TemplateView):
         # 検索処理
         return render(request, self.template_name)
 
-    def get(self, request, *args, **kwargs):
+
+class StoreSearchResultView(TemplateView):
+    template_name = 'store_search_result.html'
+
+    def post(self, request, *args, **kwargs):
         # 検索処理
         return render(request, self.template_name)
