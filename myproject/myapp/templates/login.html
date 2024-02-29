@@ -1,13 +1,11 @@
 {% extends "base.html" %}
-{% load bootstrap %}
 
 {% block title %}ログイン{% endblock %}
 {% block content %}
-<h1>ログイン</h1>
+<h1>ログイン画面</h1>
 
 <form method="post">
     {% csrf_token %}
-    {{ form|bootstrap }}
     <br>
     <input type="submit" class="btn btn-primary" value="ログイン">
 </form>
