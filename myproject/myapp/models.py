@@ -24,22 +24,14 @@ class CustomUser(AbstractUser):
     )
 
 
-class StoreDetail(models.Model):
-    # 店舗名
-    name = models.CharField(max_length=100, primary_key=True)
-    # ジャンル
-    genre = models.CharField(max_length=100)
-    # 都道府県
-    prefecture = models.CharField(max_length=10)
-    # 都道府県に続く住所
-    address = models.CharField(max_length=100)
-
-
 class GeneralUser(models.Model):
     name = models.CharField(max_length=100)
     id = models.AutoField(primary_key=True)
     password = models.CharField(max_length=100)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
 
 class StoreUser(models.Model):
@@ -48,9 +40,32 @@ class StoreUser(models.Model):
     password = models.CharField(max_length=100)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
 
 class Administrator(models.Model):
     name = models.CharField(max_length=100)
     id = models.AutoField(primary_key=True)
     password = models.CharField(max_length=100)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+
+class Store(models.Model):
+    id = models.AutoField(primary_key=True)
+    # 店舗名
+    name = models.CharField(max_length=100)
+    # ジャンル
+    genre = models.CharField(max_length=100)
+    # 都道府県
+    prefecture = models.CharField(max_length=10)
+    # 都道府県に続く住所
+    address = models.CharField(max_length=100)
+    # 写真
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
+
+    def __str__(self):
+        return self.name

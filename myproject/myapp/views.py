@@ -1,25 +1,46 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
-from myapp.models import StoreDetail
+# from django.views.generic import ListView, DetailView
+from .models import Store
 
 
-class SearchResultView(TemplateView):
-    template_name = 'search_result.html'
+# class StoreSearchListView(ListView):
+#     model = Store
+#     template_name = 'store_search.html'
+#     context_object_name = 'stores'
 
-    def post(self, request, *args, **kwargs):
-        # 検索処理
-        return render(request, self.template_name)
+#     def get_queryset(self):
+#         query = self.request.GET.get('query', '')
+#         if query:
+#             return Store.objects.filter(name__icontains=query)
+#         return Store.objects.none()
 
 
-class SearchView(TemplateView):
-    template_name = 'search.html'
+# class StoreDetailView(DetailView):
+#     model = Store
+#     template_name = 'store_detail.html'
+#     context_object_name = 'store'
 
-    def post(self, request, *args, **kwargs):
-        search_query = request.POST.get('search_query', '')
-        hit_store_detail = StoreDetail.objects.filter(name__icontains=search_query)
-        context = {
-            # キー名がhtmlに渡される
-            'hit_store_detail': hit_store_detail,
-            'search_query': search_query,
-        }
-        return render(request, 'result.html', context)
+
+def store_list(request):
+    stores = Store.objects.all()
+    query = request.GET.get('q', '')
+    if query:
+        stores = stores.filter(name__icontains=query) | \
+                 stores.filter(address__icontains=query) | \
+                 stores.filter(genre__icontains=query) | \
+                 stores.filter(prefecture__icontains=query)
+    return render(
+        request,
+        'store_list.html',
+        {'stores': stores, 'query': query}
+    )
+
+
+def store_detail(request, pk):
+    store = Store.objects.get(pk=pk)
+    return render(
+        request,
+        'store_detail.html',
+        {
+            'store': store,
+            })
