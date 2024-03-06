@@ -17,15 +17,12 @@ Including another URLconf
 from django.urls import path
 
 from myapp import views
-# from myproject.myapp import admin
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = 'myapp'
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
-    # path('', views.StoreSearchListView.as_view(), name='store_search'),
-    # path('store/<int:pk>/', views.StoreDetailView.as_view(), name='store_detail'),
     path('store_list', views.store_list, name='store_list'),
     path('store/<int:pk>/', views.store_detail, name='store_detail'),
-    path('store_detail/', views.store_detail, name='store_detail2'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

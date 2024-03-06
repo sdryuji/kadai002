@@ -65,7 +65,8 @@ class Store(models.Model):
     # 都道府県に続く住所
     address = models.CharField(max_length=100)
     # 写真
-    image = models.ImageField(upload_to='images/', blank=True, null=True)
+    image = models.ImageField(blank=True, null=True)
+    # image = models.ImageField(upload_to='media/', blank=True, null=True)
 
     def __str__(self):
         return self.name
