@@ -55,6 +55,7 @@ class Administrator(models.Model):
 
 
 class Store(models.Model):
+    # ID
     id = models.AutoField(primary_key=True)
     # 店舗名
     name = models.CharField(max_length=100)
@@ -66,7 +67,8 @@ class Store(models.Model):
     address = models.CharField(max_length=100)
     # 写真
     image = models.ImageField(blank=True, null=True)
-    # image = models.ImageField(upload_to='media/', blank=True, null=True)
+    # upload_toを使用すれば、MEDIA_ROOT配下の任意のフォルダを指定できる
+    # image = models.ImageField(upload_to='images/', blank=True, null=True)
 
     def __str__(self):
         return self.name

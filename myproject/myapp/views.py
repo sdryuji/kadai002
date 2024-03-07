@@ -1,24 +1,5 @@
 from django.shortcuts import render
-# from django.views.generic import ListView, DetailView
 from .models import Store
-
-
-# class StoreSearchListView(ListView):
-#     model = Store
-#     template_name = 'store_search.html'
-#     context_object_name = 'stores'
-
-#     def get_queryset(self):
-#         query = self.request.GET.get('query', '')
-#         if query:
-#             return Store.objects.filter(name__icontains=query)
-#         return Store.objects.none()
-
-
-# class StoreDetailView(DetailView):
-#     model = Store
-#     template_name = 'store_detail.html'
-#     context_object_name = 'store'
 
 
 def store_list(request):
@@ -32,7 +13,10 @@ def store_list(request):
     return render(
         request,
         'store_list.html',
-        {'stores': stores, 'query': query}
+        {
+            'stores': stores,
+            'query': query
+        }
     )
 
 
@@ -43,4 +27,5 @@ def store_detail(request, pk):
         'store_detail.html',
         {
             'store': store,
-            })
+        }
+    )

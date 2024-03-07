@@ -7,16 +7,16 @@
     <title>Store List</title>
 </head>
 <body>
-    <h1>Store List</h1>
+    <h1>店舗一覧</h1>
     <form method="get">
         <input type="text" name="q" placeholder="Search...">
-        <button type="submit">Search</button>
+        <button type="submit">検索</button>
     </form>
     <ul>
         {% for store in stores %}
             <li><a href="{% url 'myapp:store_detail' store.pk %}">{{ store.name }}</a></li>
         {% empty %}
-            <li>No stores found.</li>
+            <li>条件に一致する店舗が見つかりませんでした。</li>
         {% endfor %}
     </ul>
 </body>
