@@ -121,7 +121,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#ログイン認証
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'top'
+# 認証リダイレクト設定
+LOGIN_URL = "login"  # LOGINが必要なビューにアクセスがあった場合の遷移先
+LOGIN_REDIRECT_URL = "top"  # LOGIN後のリダイレクト先
+LOGOUT_REDIRECT_URL = "top"  # LOGOUT後のリダイレクト先
+
+AUTHENTICATION_BACKENDS = ["path.to.backends.EmailBackend"]
