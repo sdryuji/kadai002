@@ -22,7 +22,7 @@ from myapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.TopView.as_view(), name="top"),
-    # path('myapp/serch/', views.SerchView.as_view(), name="serch"),
+    path('', include("myapp.urls")), # myapp.urls.pyを読み込むための設定を追加
     path('login/', views.LoginView.as_view(), name="login"),
-    path('logout/', views.LogoutView.as_view(), name="logout"),
+    path('logout/', views.LogoutView.as_view(), name="logout")
 ]

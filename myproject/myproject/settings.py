@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-#f)&6+&a343)+6l#u6rgkptm9$9@ua@@-l6okjmx+9hi0_7-#k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -121,9 +121,11 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AUTH_USER_MODEL = "myapp.User" # カスタムユーザーを認証用ユーザーとして登録
+
 # 認証リダイレクト設定
 LOGIN_URL = "login"  # LOGINが必要なビューにアクセスがあった場合の遷移先
-LOGIN_REDIRECT_URL = "top"  # LOGIN後のリダイレクト先
-LOGOUT_REDIRECT_URL = "top"  # LOGOUT後のリダイレクト先
+LOGIN_REDIRECT_URL = "myapp:index"  # LOGIN後のリダイレクト先
+LOGOUT_REDIRECT_URL = "myapp:login"  # LOGOUT後のリダイレクト先
 
 AUTHENTICATION_BACKENDS = ["path.to.backends.EmailBackend"]
