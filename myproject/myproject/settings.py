@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -121,7 +121,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = "myapp.User" # カスタムユーザーを認証用ユーザーとして登録
+AUTH_USER_MODEL = "myapp.User"  # カスタムユーザーを認証用ユーザーとして登録
 
 # 認証リダイレクト設定
 LOGIN_URL = "login"  # LOGINが必要なビューにアクセスがあった場合の遷移先

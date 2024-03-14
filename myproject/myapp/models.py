@@ -88,7 +88,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'account_id' # ログイン時、ユーザー名の代わりにaccount_idを使用
+    USERNAME_FIELD = 'account_id'  # ログイン時、ユーザー名の代わりにaccount_idを使用
     REQUIRED_FIELDS = ['email']  # スーパーユーザー作成時にemailも設定する
 
     def __str__(self):
