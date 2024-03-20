@@ -16,12 +16,17 @@ Including another URLconf
 """
 from django.urls import path
 from myapp import views
-# from django.conf import settings
-# from django.conf.urls.static import static
+from django.contrib.auth.views import LoginView
 
 app_name = 'myapp'
 urlpatterns = [
+    path('signup/', views.SignUpView.as_view(), name='signup'),
+    # トップページから遷移するログインページ
+    path('login/', LoginView.as_view(), name='login'),
+    # settings.pyでリダイレクトURLを設定している
+    path('logout/', LoginView.as_view(), name='logout'),
+    # ログイン後に到達するページ
     path('store_list', views.store_list, name='store_list'),
+    # 詳細ページ
     path('store/<int:pk>/', views.store_detail, name='store_detail'),
 ]
-# ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

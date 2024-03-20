@@ -1,5 +1,24 @@
 from django.shortcuts import render
 from .models import Store
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView, CreateView
+
+
+from django.contrib.auth.forms import UserCreationForm
+
+
+class SignUpView(CreateView):
+    template_name = 'signup.html'
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+
+
+class TopView(TemplateView):
+    template_name = 'top.html'
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        return ctx
 
 
 def store_list(request):
